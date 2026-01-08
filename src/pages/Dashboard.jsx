@@ -1,9 +1,14 @@
 import { useFriends } from '../contexts/FriendsContext';
 import { useNotes } from '../contexts/NotesContext';
+import { useReminders } from '../contexts/RemindersContext';
 
 function Dashboard() {
   const { friends } = useFriends();
   const { notes } = useNotes();
+  const { getUpcomingReminders } = useReminders();
+
+  const upcomingReminders = getUpcomingReminders();
+  const dueRemindersCount = upcomingReminders.filter(r => r.isDue).length;
 
   return (
     <div className="dashboard">
@@ -18,9 +23,8 @@ function Dashboard() {
           <p>Total Friends</p>
         </div>
         <div className="stat-card">
-          <h3>0</h3>
-          <p>Upcoming Reminders</p>
-          <span className="coming-soon-badge">Coming Soon</span>
+          <h3>{dueRemindersCount}</h3>
+          <p>Due Reminders</p>
         </div>
         <div className="stat-card">
           <h3>{notes.length}</h3>

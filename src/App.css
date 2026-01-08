@@ -61,6 +61,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  gap: .5rem;
   margin-top: 1rem;
   overflow-y: auto;
 }
@@ -108,10 +109,18 @@
 }
 
 .friend-name {
+  flex: 1;
   font-size: 0.95rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.reminder-indicator {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .add-friend-btn {
@@ -313,6 +322,62 @@
   border-color: #444;
 }
 
+.reminder-section {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 12px;
+}
+
+.reminder-section h3 {
+  margin: 0 0 0.5rem 0;
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.reminder-section p {
+  margin: 0 0 1rem 0;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.reminder-options {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.reminder-btn {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.reminder-btn:hover {
+  background: #2a2a2a;
+  border-color: #444;
+}
+
+.reminder-btn.active {
+  background: #646cff;
+  border-color: #646cff;
+  color: #fff;
+}
+
+.reminder-status {
+  margin: 0.5rem 0 0 0;
+  color: #646cff;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
 .profile-content {
   margin-top: 2rem;
   padding-bottom: 10rem;
@@ -509,10 +574,6 @@
 }
 
 .note-item {
-  background: #111;
-  border: 1px solid #222;
-  border-radius: 8px;
-  padding: 1rem;
   transition: border-color 0.2s;
 }
 
