@@ -63,8 +63,9 @@ function FriendProfile() {
 
       <div className="profile-content">
         <h2>Notes</h2>
-        <AddNoteForm friendId={id} />
         <NotesList friendId={id} />
+        <AddNoteForm friendId={id} />
+
       </div>
     </div>
   );

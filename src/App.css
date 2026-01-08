@@ -315,6 +315,7 @@
 
 .profile-content {
   margin-top: 2rem;
+  padding-bottom: 10rem;
 }
 
 .profile-content h2 {
@@ -421,23 +422,45 @@
 
 /* Notes Section */
 .add-note-form {
+  position: fixed;
+  bottom: 2rem;
+  left: 280px;
+  right: 0;
   display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin-bottom: 2rem;
+  justify-content: center;
+  padding: 0 4rem;
+  z-index: 10;
+}
+
+.note-input-wrapper {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 800px;
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 12px;
+  padding: 0.5rem;
+  transition: border-color 0.2s;
+}
+
+.note-input-wrapper:focus-within {
+  border-color: #444;
 }
 
 .note-textarea {
-  padding: 0.75rem 1rem;
-  background: #111;
-  border: 1px solid #222;
-  border-radius: 8px;
+  flex: 1;
+  padding: 0.5rem;
+  background: transparent;
+  border: none;
   color: #fff;
   font-size: 0.95rem;
   font-family: inherit;
-  resize: vertical;
-  min-height: 80px;
-  transition: border-color 0.2s;
+  resize: none;
+  max-height: 200px;
+  overflow-y: auto;
+  line-height: 1.5;
 }
 
 .note-textarea::placeholder {
@@ -446,11 +469,30 @@
 
 .note-textarea:focus {
   outline: none;
-  border-color: #444;
 }
 
-.add-note-form .button {
-  align-self: flex-start;
+.note-submit-btn {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: none;
+  background: #fff;
+  color: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.note-submit-btn:hover:not(:disabled) {
+  background: #e0e0e0;
+}
+
+.note-submit-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
 }
 
 .notes-list {
@@ -573,5 +615,10 @@
   .profile-header-section {
     flex-direction: column;
     text-align: center;
+  }
+
+  .add-note-form {
+    left: 0;
+    padding: 0 1rem;
   }
 }
