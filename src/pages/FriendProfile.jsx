@@ -61,17 +61,18 @@ function FriendProfile() {
         </div>
 
         <div className="profile-info">
-          <h1>{friend.name}</h1>
+          <div className="profile-name-row">
+            <h1>{friend.name}</h1>
+            <div className="profile-actions">
+              <button onClick={handleDelete} className="button danger small">
+                Delete
+              </button>
+            </div>
+          </div>
           {friend.birthday && (
             <p className="birthday">Birthday: {formatDate(friend.birthday)}</p>
           )}
           <p className="added-date">Friend since {formatDate(friend.createdAt)}</p>
-
-          <div className="profile-actions">
-            <button onClick={handleDelete} className="button danger">
-              Delete Friend
-            </button>
-          </div>
         </div>
 
         <div className="reminder-dropdown-container">
