@@ -64,21 +64,7 @@ function NotesList({ friendId }) {
     <div className="notes-list">
       {notes.map(note => (
         <div key={note.id} className="note-item">
-          <div className="note-header">
-            <span className="note-date">{formatDate(note.createdAt)}</span>
-            <div className="note-actions">
-              {editingId !== note.id && (
-                <>
-                  <button onClick={() => handleEdit(note)} className="note-action-btn">
-                    Edit
-                  </button>
-                  <button onClick={() => handleDelete(note.id)} className="note-action-btn delete">
-                    Delete
-                  </button>
-                </>
-              )}
-            </div>
-          </div>
+          <span className="note-date">{formatDate(note.createdAt)}</span>
 
           {editingId === note.id ? (
             <div className="note-edit">
@@ -98,7 +84,17 @@ function NotesList({ friendId }) {
               </div>
             </div>
           ) : (
-            <p className="note-content">{note.content}</p>
+            <div className="note-content-row">
+              <p className="note-content">{note.content}</p>
+              <div className="note-actions">
+                <button onClick={() => handleEdit(note)} className="note-action-btn">
+                  Edit
+                </button>
+                <button onClick={() => handleDelete(note.id)} className="note-action-btn delete">
+                  Delete
+                </button>
+              </div>
+            </div>
           )}
         </div>
       ))}

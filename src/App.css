@@ -116,6 +116,28 @@
   white-space: nowrap;
 }
 
+.note-count-badge {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 0.5rem;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 12px;
+  color: #888;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.friend-item:hover .note-count-badge,
+.friend-item.active .note-count-badge {
+  border-color: #444;
+  color: #aaa;
+}
+
 .reminder-indicator {
   flex-shrink: 0;
   display: flex;
@@ -571,17 +593,13 @@
 
 .note-item {
   transition: border-color 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .note-item:hover {
   border-color: #333;
-}
-
-.note-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.75rem;
 }
 
 .note-date {
@@ -589,9 +607,16 @@
   font-size: 0.85rem;
 }
 
+.note-content-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
 .note-actions {
   display: flex;
   gap: 0.5rem;
+  flex-shrink: 0;
 }
 
 .note-action-btn {
@@ -618,6 +643,7 @@
   margin: 0;
   white-space: pre-wrap;
   word-break: break-word;
+  flex: 1;
 }
 
 .note-edit {

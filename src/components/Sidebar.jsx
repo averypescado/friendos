@@ -2,10 +2,12 @@ import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useFriends } from '../contexts/FriendsContext';
 import { useReminders } from '../contexts/RemindersContext';
+import { useNotes } from '../contexts/NotesContext';
 
 function Sidebar() {
   const { friends, addFriend } = useFriends();
   const { getUpcomingReminders } = useReminders();
+  const { getNotesForFriend } = useNotes();
   const location = useLocation();
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
@@ -56,6 +58,9 @@ function Sidebar() {
               )}
             </div>
             <span className="friend-name">{friend.name}</span>
+            <span className="note-count-badge" title={`${getNotesForFriend(friend.id).length} notes`}>
+              {getNotesForFriend(friend.id).length}
+            </span>
             {dueReminderFriendIds.has(friend.id) && (
               <span className="reminder-indicator" title="Reminder due">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
