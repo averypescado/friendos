@@ -13,22 +13,7 @@ function Sidebar() {
   );
 
   const handleAddFriend = () => {
-    const name = prompt('Enter friend\'s name:');
-    if (!name) return;
-
-    const photo = prompt('Enter photo URL (optional):');
-    const birthday = prompt('Enter birthday (YYYY-MM-DD) (optional):');
-
-    const newFriend = {
-      id: crypto.randomUUID(),
-      name,
-      photo: photo || null,
-      birthday: birthday || null,
-      createdAt: new Date().toISOString()
-    };
-
-    addFriend(newFriend);
-    navigate(`/friends/${newFriend.id}`);
+    navigate('/add-friend');
   };
 
   return (

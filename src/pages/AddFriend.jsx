@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useFriends } from '../contexts/FriendsContext';
-import { v4 as uuidv4 } from 'uuid';
 
 function AddFriend() {
   const navigate = useNavigate();
@@ -16,7 +15,7 @@ function AddFriend() {
     e.preventDefault();
 
     const newFriend = {
-      id: uuidv4(),
+      id: crypto.randomUUID(),
       name: formData.name,
       photo: formData.photo || null,
       birthday: formData.birthday || null,
@@ -24,7 +23,7 @@ function AddFriend() {
     };
 
     addFriend(newFriend);
-    navigate('/friends');
+    navigate(`/friends/${newFriend.id}`);
   };
 
   const handleChange = (e) => {
@@ -37,7 +36,7 @@ function AddFriend() {
 
   return (
     <div className="add-friend-page">
-      <h2>Add New Friend</h2>
+      <h1>Add New Friend</h1>
 
       <form onSubmit={handleSubmit} className="friend-form">
         <div className="form-group">
@@ -81,7 +80,7 @@ function AddFriend() {
           <button
             type="button"
             className="button secondary"
-            onClick={() => navigate('/friends')}
+            onClick={() => navigate('/')}
           >
             Cancel
           </button>
