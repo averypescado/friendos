@@ -249,7 +249,7 @@
 
 .profile-header-section {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 2rem;
   margin-bottom: 3rem;
   padding-bottom: 2rem;
@@ -322,60 +322,45 @@
   border-color: #444;
 }
 
-.reminder-section {
-  margin-top: 2rem;
-  padding: 1.5rem;
-  background: #111;
-  border: 1px solid #222;
-  border-radius: 12px;
-}
-
-.reminder-section h3 {
-  margin: 0 0 0.5rem 0;
-  color: #fff;
-  font-size: 1.1rem;
-}
-
-.reminder-section p {
-  margin: 0 0 1rem 0;
-  color: #888;
-  font-size: 0.9rem;
-}
-
-.reminder-options {
+.reminder-dropdown-container {
+  margin-left: auto;
   display: flex;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-end;
 }
 
-.reminder-btn {
-  flex: 1;
-  padding: 0.75rem 1rem;
-  background: #1a1a1a;
+.reminder-dropdown-container label {
+  color: #888;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.reminder-select {
+  padding: 0.5rem 0.75rem;
+  background: #111;
   border: 1px solid #333;
-  border-radius: 8px;
+  border-radius: 6px;
   color: #fff;
   font-size: 0.9rem;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: border-color 0.2s;
+  min-width: 120px;
 }
 
-.reminder-btn:hover {
-  background: #2a2a2a;
+.reminder-select:hover {
   border-color: #444;
 }
 
-.reminder-btn.active {
-  background: #646cff;
+.reminder-select:focus {
+  outline: none;
   border-color: #646cff;
-  color: #fff;
 }
 
-.reminder-status {
-  margin: 0.5rem 0 0 0;
-  color: #646cff;
-  font-size: 0.85rem;
-  font-weight: 500;
+.reminder-select option {
+  background: #111;
+  color: #fff;
 }
 
 .profile-content {

@@ -73,36 +73,21 @@ function FriendProfile() {
             </button>
           </div>
         </div>
-      </div>
 
-      <div className="reminder-section">
-        <h3>Check-in Reminder</h3>
-        <p>Get reminded to reach out to {friend.name}</p>
-        <div className="reminder-options">
-          <button
-            className={`reminder-btn ${currentReminder?.intervalDays === 7 ? 'active' : ''}`}
-            onClick={() => handleReminderChange(currentReminder?.intervalDays === 7 ? null : 7)}
+        <div className="reminder-dropdown-container">
+          <label htmlFor="reminder-select">Check in</label>
+          <select
+            id="reminder-select"
+            value={currentReminder?.intervalDays || ''}
+            onChange={(e) => handleReminderChange(e.target.value ? parseInt(e.target.value) : null)}
+            className="reminder-select"
           >
-            1 Week
-          </button>
-          <button
-            className={`reminder-btn ${currentReminder?.intervalDays === 30 ? 'active' : ''}`}
-            onClick={() => handleReminderChange(currentReminder?.intervalDays === 30 ? null : 30)}
-          >
-            1 Month
-          </button>
-          <button
-            className={`reminder-btn ${currentReminder?.intervalDays === 90 ? 'active' : ''}`}
-            onClick={() => handleReminderChange(currentReminder?.intervalDays === 90 ? null : 90)}
-          >
-            3 Months
-          </button>
+            <option value="">None</option>
+            <option value="7">1 Week</option>
+            <option value="30">1 Month</option>
+            <option value="90">3 Months</option>
+          </select>
         </div>
-        {currentReminder && (
-          <p className="reminder-status">
-            Reminder set for every {getIntervalLabel(currentReminder.intervalDays).toLowerCase()}
-          </p>
-        )}
       </div>
 
       <div className="profile-content">
