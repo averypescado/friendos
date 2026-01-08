@@ -1,7 +1,9 @@
 import { useFriends } from '../contexts/FriendsContext';
+import { useNotes } from '../contexts/NotesContext';
 
 function Dashboard() {
   const { friends } = useFriends();
+  const { notes } = useNotes();
 
   return (
     <div className="dashboard">
@@ -21,9 +23,8 @@ function Dashboard() {
           <span className="coming-soon-badge">Coming Soon</span>
         </div>
         <div className="stat-card">
-          <h3>0</h3>
+          <h3>{notes.length}</h3>
           <p>Notes</p>
-          <span className="coming-soon-badge">Coming Soon</span>
         </div>
       </div>
 

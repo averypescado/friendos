@@ -1,5 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useFriends } from '../contexts/FriendsContext';
+import NotesList from '../components/NotesList';
+import AddNoteForm from '../components/AddNoteForm';
 
 function FriendProfile() {
   const { id } = useParams();
@@ -61,7 +63,8 @@ function FriendProfile() {
 
       <div className="profile-content">
         <h2>Notes</h2>
-        <p className="coming-soon">Notes functionality coming in Phase 2!</p>
+        <AddNoteForm friendId={id} />
+        <NotesList friendId={id} />
       </div>
     </div>
   );
