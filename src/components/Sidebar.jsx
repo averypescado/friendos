@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useFriends } from '../contexts/FriendsContext';
 import { useReminders } from '../contexts/RemindersContext';
 import { useNotes } from '../contexts/NotesContext';
+import {House} from 'lucide-react'
 
 function Sidebar() {
   const { friends, addFriend } = useFriends();
@@ -27,8 +28,12 @@ function Sidebar() {
 
   return (
     <aside className="sidebar">
-      <Link to="/" className={`nav-item ${location.pathname === '/' ? 'active' : ''}`}>
-        Home
+      <Link to="/" className={`friend-item ${location.pathname === '/' ? 'active' : ''}`}>
+          <div className="friend-avatar">
+            <House size={20}/>
+            
+          </div>
+ Home
       </Link>
 
       <div className="search-container">

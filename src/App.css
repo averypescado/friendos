@@ -12,12 +12,17 @@
 /* Sidebar Styles */
 .sidebar {
   width: 280px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
   background: #111;
   border-right: 1px solid #222;
   display: flex;
   flex-direction: column;
   padding: 1rem 1rem;
   gap: 1rem;
+  overflow: hidden;
 }
 
 .nav-item {
@@ -27,6 +32,9 @@
   font-weight: 500;
   padding: 0.25rem 0;
   transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .nav-item:hover,
@@ -70,7 +78,7 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.75rem;
+  padding: 0.5rem;
   border-radius: 8px;
   color: #fff;
   text-decoration: none;
@@ -88,6 +96,9 @@
   border-radius: 50%;
   overflow: hidden;
   flex-shrink: 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .friend-avatar img {
@@ -165,55 +176,274 @@
 /* Main Content Area */
 .main-content {
   flex: 1;
-  padding: 3rem 4rem;
+  margin-left: 280px;
+  display: flex;
+  justify-content: center;
+  padding: 0 2rem;
   overflow-y: auto;
+  height: 100vh;
 }
 
 /* Dashboard Styles */
 .dashboard {
-  max-width: 900px;
+  width: 100%;
+  max-width: 680px;
+  padding: 4rem 0;
 }
 
 .welcome-section {
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.dashboard-note-input-form {
+  position: fixed;
+  bottom: 2rem;
+  left: 280px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2rem;
+  z-index: 10;
+}
+
+.dashboard-note-input-form::before {
+  content: '';
+  position: fixed;
+  bottom: 0;
+  left: 280px;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(to top, #0a0a0a 0%, rgba(10, 10, 10, 0.95) 40%, rgba(10, 10, 10, 0.7) 70%, transparent 100%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.mention-menu {
+  width: 100%;
+  max-width: 680px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.mention-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  color: #ddd;
+  transition: background 0.2s;
+}
+
+.mention-menu-item:hover {
+  background: #222;
+}
+
+.mention-friend-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mention-friend-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mention-friend-avatar .avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  font-size: 0.9rem;
+}
+
+.dashboard-note-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 680px;
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 12px;
+  padding: 0.5rem;
+  transition: border-color 0.2s;
+}
+
+.dashboard-note-input-wrapper:focus-within {
+  border-color: #444;
+}
+
+.dashboard-note-textarea {
+  flex: 1;
+  padding: 0.5rem;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 0.95rem;
+  font-family: inherit;
+  resize: none;
+  max-height: 200px;
+  overflow-y: auto;
+  line-height: 1.5;
+}
+
+.dashboard-note-textarea::placeholder {
+  color: #666;
+}
+
+.dashboard-note-textarea:focus {
+  outline: none;
+}
+
+.dashboard-note-submit-btn {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: none;
+  background: #fff;
+  color: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.dashboard-note-submit-btn:hover:not(:disabled) {
+  background: #e0e0e0;
+}
+
+.dashboard-note-submit-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
 }
 
 .welcome-section h1 {
   color: #fff;
-  font-size: 2rem;
-  margin: 0 0 0.5rem 0;
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin: 0 0 0.75rem 0;
+  letter-spacing: -0.02em;
 }
 
 .welcome-section p {
   color: #888;
+  font-size: 1rem;
   margin: 0;
 }
 
 .dashboard-stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .stat-card {
-  background: #111;
-  border: 1px solid #222;
-  border-radius: 12px;
-  padding: 1.5rem;
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 1px solid #1a1a1a;
 }
 
-.stat-card h3 {
-  margin: 0 0 0.5rem 0;
-  font-size: 2.5rem;
-  color: #fff;
+.stat-card:last-child {
+  border-bottom: none;
 }
 
 .stat-card p {
   margin: 0;
   color: #888;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+}
+
+.stat-card h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.dashboard-notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding-bottom: 150px;
+}
+
+.dashboard-note-item {
+  padding: 1rem;
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 8px;
+  color: #ddd;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.dashboard-note-content-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.dashboard-note-friend {
+  font-size: 0.8rem;
+  color: #888;
+  font-weight: 500;
+}
+
+.dashboard-note-content {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.dashboard-note-edit {
+  width: 100%;
+}
+
+.dashboard-note-edit .note-edit-textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 0.75rem;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: #ddd;
+  font-size: 0.95rem;
+  font-family: inherit;
+  resize: vertical;
+  margin-bottom: 0.75rem;
+}
+
+.dashboard-note-edit .note-edit-textarea:focus {
+  outline: none;
+  border-color: #444;
+}
+
+.dashboard-note-edit .note-edit-actions {
+  display: flex;
+  gap: 0.5rem;
 }
 
 .coming-soon-badge {
@@ -252,21 +482,27 @@
 
 .empty-dashboard {
   text-align: center;
-  padding: 4rem 2rem;
+  padding: 6rem 2rem;
 }
 
 .empty-dashboard h2 {
   color: #fff;
-  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0 0 1rem 0;
 }
 
 .empty-dashboard p {
   color: #888;
+  font-size: 0.95rem;
+  margin: 0.5rem 0;
 }
 
 /* Friend Profile Styles */
 .friend-profile {
-  max-width: 900px;
+  width: 100%;
+  max-width: 680px;
+  padding: 4rem 0;
 }
 
 .profile-header-section {
@@ -429,12 +665,15 @@
 
 /* Add Friend Page */
 .add-friend-page {
-  max-width: 600px;
+  width: 100%;
+  max-width: 680px;
+  padding: 4rem 0;
 }
 
 .add-friend-page h1 {
   color: #fff;
   font-size: 2rem;
+  font-weight: 500;
   margin: 0 0 2rem 0;
 }
 
@@ -517,7 +756,7 @@
 
 .note-input-wrapper {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   gap: 0.5rem;
   width: 100%;
   max-width: 800px;
@@ -623,10 +862,12 @@
   background: none;
   border: none;
   color: #888;
-  font-size: 0.85rem;
   cursor: pointer;
-  padding: 0.25rem 0.5rem;
+  padding: 0.25rem;
   transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .note-action-btn:hover {
@@ -634,7 +875,7 @@
 }
 
 .note-action-btn.delete:hover {
-  color: #ff4444;
+  color: #4ade80;
 }
 
 .note-content {
@@ -686,13 +927,30 @@
   }
 
   .sidebar {
+    position: static;
     width: 100%;
     border-right: none;
     border-bottom: 1px solid #222;
+    height: 100vh;
   }
 
   .main-content {
-    padding: 2rem 1.5rem;
+    margin-left: 0;
+    padding: 0 1.5rem;
+  }
+
+  .dashboard,
+  .friend-profile,
+  .add-friend-page {
+    padding: 2rem 0;
+  }
+
+  .welcome-section {
+    margin-bottom: 3rem;
+  }
+
+  .welcome-section h1 {
+    font-size: 2rem;
   }
 
   .profile-header-section {
@@ -700,8 +958,13 @@
     text-align: center;
   }
 
-  .add-note-form {
+  .add-note-form,
+  .dashboard-note-input-form {
     left: 0;
     padding: 0 1rem;
+  }
+
+  .dashboard-note-input-form::before {
+    left: 0;
   }
 }

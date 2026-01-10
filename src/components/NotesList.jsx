@@ -64,7 +64,7 @@ function NotesList({ friendId }) {
     <div className="notes-list">
       {notes.map(note => (
         <div key={note.id} className="note-item">
-          <span className="note-date">{formatDate(note.createdAt)}</span>
+          {/* <span className="note-date">{formatDate(note.createdAt)}</span> */}
 
           {editingId === note.id ? (
             <div className="note-edit">
@@ -87,11 +87,15 @@ function NotesList({ friendId }) {
             <div className="note-content-row">
               <p className="note-content">{note.content}</p>
               <div className="note-actions">
-                <button onClick={() => handleEdit(note)} className="note-action-btn">
-                  Edit
+                <button onClick={() => handleEdit(note)} className="note-action-btn" title="Edit">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.5 1.5L14.5 4.5L5 14H2V11L11.5 1.5Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
                 </button>
-                <button onClick={() => handleDelete(note.id)} className="note-action-btn delete">
-                  Delete
+                <button onClick={() => handleDelete(note.id)} className="note-action-btn delete" title="Complete">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 8L6.5 11.5L13 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
                 </button>
               </div>
             </div>
